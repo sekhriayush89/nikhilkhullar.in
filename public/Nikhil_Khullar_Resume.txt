@@ -1,0 +1,53 @@
+NIKHIL KHULLAR
+UI UX & FRONTEND DEVELOPER
+Mohali, Punjab | 9015316384 | nikhilkhullar0@gmail.com | linkedin.com/in/nikhil-khullarr 
+github.com/nikhilkhullar0 | behance.net/nikhilkhullar | portfolio.nikhilkhullar.com
+
+PROFESSIONAL SUMMARY
+UI/UX & Frontend Developer skilled in designing responsive and user-centered digital experiences using Figma, HTML, CSS, 
+JavaScript, and Bootstrap. Experienced in wireframing, prototyping, and transforming designs into functional frontend 
+interfaces with strong focus on usability, accessibility, and modern UI principles. Passionate about creating scalable and 
+visually engaging web applications.
+
+SKILLS
+Frontend: HTML5, CSS3, JavaScript, Bootstrap, Responsive Web Design
+UI/UX Tools: Figma, Adobe Photoshop, Adobe Illustrator
+Design Skills: Wireframing, Prototyping, User Interface Design, User Experience Design, User Research, Design Systems
+Core Concepts: Responsive Design, User-Centered Design, Accessibility, Visual Hierarchy, Interaction Design
+Tools & Platforms: Git, GitHub, VS Code
+Soft Skills: Cross-Functional Collaboration, Problem-Solving, Communication, Attention to Detail, Visual Creativity, 
+Adaptability
+
+INTERNSHIP
+MAAC | UI/UX Intern | Mohali, Punjab | Oct 2025 – Apr 2026
+• Designed 20+ wireframes and high-fidelity UI screens using Figma, improving usability and navigation flow 
+• Conducted user research and usability testing, reducing user friction by 20% 
+• Built responsive UI components using HTML, CSS, and Bootstrap 
+
+PROJECTS
+Project | Healix Health Care | Tools: HTML5, CSS3, Bootstrap5, JavaScript
+• Directed the end-to-end UI/UX design lifecycle for a healthcare application, including user research, wireframing, and 
+interactive prototyping.
+• Developed clean, accessible, and responsive interface designs to enhance usability and user engagement
+• Live: https://nikhilkhullar0-ship-it.github.io/healix/
+
+Project | Stride Footwear Website | Tools: HTML5, CSS3, Bootstrap5, JavaScript, Figma 
+• Built a responsive footwear website with a modern UI, optimized navigation, and mobile-friendly layouts.
+• Engineered responsive, mobile-first interfaces using HTML5, CSS3, and Bootstrap5.
+• Live: https://nikhilkhullar0-ship-it.github.io/stride/
+
+EDUCATION
+BCA | Himachal Pradesh University | Aug 2021 – Jun 2024
+Relevant Coursework: Web Development
+
+CERTIFICATION
+UI/UX Design Certification (ISO Certified) | ITM Mohali | Oct 2024 – Mar 2025
+• Gained hands-on experience in Figma, wireframing, prototyping, usability testing, and design systems
+• Designed responsive and user-centered interfaces following modern UI/UX principles
+
+Web Development Bootcamp – AI Integrated | Udemy
+• Learned frontend and backend web development concepts including HTML, CSS, and JavaScript
+• Built responsive web applications and explored AI-integrated development workflows
+
+LANGUAGE
+English (Fluent), Hindi (Native), Punjabi (Conversational)
