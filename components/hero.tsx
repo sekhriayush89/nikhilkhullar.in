@@ -65,6 +65,17 @@ export default function Hero() {
               <div className="absolute inset-0 bg-accent translate-x-full group-hover:translate-x-0 transition-transform duration-300 -z-10" />
               View My Work
             </a>
+            <button
+              onClick={() => {
+                const contactSection = document.getElementById("contact")
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
+              className="px-8 py-3.5 rounded-lg border-2 border-accent/40 text-foreground font-semibold hover:border-accent hover:bg-accent/5 transition-all duration-300 cursor-pointer"
+            >
+              Get in Touch
+            </button>
           </div>
 
           {/* Stats */}

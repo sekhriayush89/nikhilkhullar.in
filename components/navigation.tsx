@@ -15,6 +15,15 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const handleResumeClick = () => {
+    const link = document.createElement("a")
+    link.href = "/Nikhil_Khullar_Resume.pdf"
+    link.download = "Nikhil_Khullar_Resume.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-md border-b border-accent/30" : "bg-transparent"
@@ -41,12 +50,14 @@ export default function Navigation() {
           ))}
         </div>
 
-        <a
-          href="#contact"
-          className="px-6 py-2 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity text-sm shadow-lg shadow-primary/30"
-        >
-          Get in Touch
-        </a>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleResumeClick}
+            className="px-6 py-2 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity text-sm shadow-lg shadow-primary/30"
+          >
+            Resume
+          </button>
+        </div>
       </div>
     </nav>
   )
