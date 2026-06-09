@@ -35,7 +35,7 @@ export default function Skills() {
     "Attention to Detail",
     "Visual Creativity",
     "Adaptability",
-    "Ai Artist"
+    "Ai Artist",
   ]
 
   useEffect(() => {
@@ -61,8 +61,8 @@ export default function Skills() {
           {allSkills.map((skill) => (
             <div
               key={skill}
-              className={`px-4 py-2 rounded-lg border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent text-sm font-medium text-foreground transition-all duration-300 ${animatedSkills.includes(skill) ? "opacity-100 scale-100" : "opacity-0 scale-75"
-                } hover:border-accent hover:bg-gradient-to-br hover:from-accent/20 hover:to-transparent hover:scale-105 cursor-default`}
+              className={`px-4 py-2 rounded-lg border border-accent/30 bg-linear-to-br from-accent/10 to-transparent text-sm font-medium text-foreground transition-all duration-300 ${animatedSkills.includes(skill) ? "opacity-100 scale-100" : "opacity-0 scale-75"
+                } hover:border-accent hover:bg-linear-to-br hover:from-accent/20 hover:to-transparent hover:scale-105 cursor-default`}
             >
               {skill}
             </div>

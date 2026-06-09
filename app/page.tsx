@@ -7,6 +7,7 @@ import About from '@/components/about'
 import Skills from '@/components/skills'
 import Services from '@/components/services'
 import Projects from '@/components/projects'
+import AIShowreel from '@/components/ai-showreel'
 import Testimonials from '@/components/testimonials'
 import Hobbies from '@/components/hobbies'
 import Roadmap from '@/components/roadmap'
@@ -39,6 +40,7 @@ export default function Home() {
       <Skills />
       <Services />
       <Projects />
+      <AIShowreel />
       <Testimonials />
       <Hobbies />
       <Roadmap />

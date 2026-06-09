@@ -32,20 +32,31 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="#"
-          className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+          className="text-2xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
         >
           NK
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {["About", "Skills", "Services", "Projects", "Testimonials", "Hobbies", "Roadmap", "Education", "Contact"].map((item) => (
+          {[
+            { label: "About", href: "#about" },
+            { label: "Skills", href: "#skills" },
+            { label: "Services", href: "#services" },
+            { label: "Projects", href: "#projects" },
+            { label: "AI Showreel", href: "#ai-showreel" },
+            { label: "Testimonials", href: "#testimonials" },
+            { label: "Hobbies", href: "#hobbies" },
+            { label: "Roadmap", href: "#roadmap" },
+            { label: "Education", href: "#education" },
+            { label: "Contact", href: "#contact" },
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors duration-200 relative group"
             >
-              {item}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
+              {item.label}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
             </a>
           ))}
         </div>
