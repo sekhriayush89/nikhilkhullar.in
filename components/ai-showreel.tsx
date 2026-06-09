@@ -2,12 +2,24 @@
 
 import { useInView } from "@/hooks/use-in-view"
 import { Sparkles } from "lucide-react"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 
 export default function AIShowreel() {
   const ref = useRef(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
   const isInView = useInView(ref)
-  const videoUrl = "https://drive.google.com/file/d/1aCMUGGWv9vI36lTrm8ExtjH_HUBoaIKp/preview?autoplay=1&mute=1&embedded=true"
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    videoRef.current.muted = true
+    videoRef.current.volume = 0
+  }, [])
+
+  const handleVideoEnded = () => {
+    if (!videoRef.current) return
+    videoRef.current.currentTime = 0
+    videoRef.current.play().catch(() => {})
+  }
 
   const reels = [
     {
@@ -54,13 +66,20 @@ export default function AIShowreel() {
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
             <div className="relative min-h-112">
               <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30">
-                <iframe
-                  src={videoUrl}
+                <video
+                  ref={videoRef}
                   title="AI Showreel video"
                   className="absolute inset-0 h-full w-full"
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  controls={false}
+                  onEnded={handleVideoEnded}
+                >
+                  <source src="/images/chroma-keyed-video-20-281-29.webm" type="video/webm" />
+                </video>
 
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
               </div>
