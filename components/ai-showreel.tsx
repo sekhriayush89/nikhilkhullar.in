@@ -1,34 +1,12 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { Sparkles } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
 
 export default function AIShowreel() {
   const sectionRef = useRef<HTMLElement | null>(null)
-  const videoRef = useRef<HTMLVideoElement | null>(null)
   const isInView = useInView(sectionRef)
-  const fallbackMp4 = "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    video.muted = true
-    video.volume = 0
-  }, [])
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    if (isInView) {
-      video.currentTime = 0
-      video.play().catch(() => {})
-    } else {
-      video.pause()
-    }
-  }, [isInView])
 
   const reels = [
     {
@@ -79,7 +57,6 @@ export default function AIShowreel() {
             <div className="relative min-h-112">
               <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30">
                 <video
-                  ref={videoRef}
                   className="absolute inset-0 h-full w-full object-cover"
                   autoPlay
                   muted
@@ -88,9 +65,8 @@ export default function AIShowreel() {
                   preload="auto"
                   controls={false}
                   poster="/placeholder.jpg"
+                  src="/ai.mp4"
                 >
-                  <source src="/images/chroma-keyed-video-20-281-29.webm" type="video/webm" />
-                  <source src={fallbackMp4} type="video/mp4" />
                 </video>
 
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
