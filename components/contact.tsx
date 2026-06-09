@@ -80,7 +80,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 items-stretch">
               {/* Email */}
               <div className="p-6 rounded-lg border border-border/40 hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 text-center">
                 <div className="flex justify-center mb-4">
@@ -94,22 +94,34 @@ export default function Contact() {
                 </a>
               </div>
 
-              {/* Book a Call */}
-              <div className="p-6 rounded-lg border border-border/40 hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 text-center">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 rounded-lg bg-accent/10">
-                    <CalendarDays size={24} className="text-accent" />
+              {/* Schedule a Call */}
+              <div className="relative overflow-hidden rounded-2xl border border-accent/30 bg-linear-to-br from-accent/10 via-background to-primary/10 p-6 text-center shadow-lg shadow-accent/5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-2xl hover:shadow-accent/10 md:-translate-y-4">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_45%)]" />
+                <div className="relative flex h-full flex-col items-center justify-between gap-4">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-background/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-accent backdrop-blur-sm">
+                    <CalendarDays size={14} />
+                    Available now
+                  </div>
+                  <div>
+                    <div className="flex justify-center mb-4">
+                      <div className="p-4 rounded-2xl bg-accent/10 ring-1 ring-accent/20">
+                        <CalendarDays size={28} className="text-accent" />
+                      </div>
+                    </div>
+                    <h4 className="font-semibold text-foreground mb-2 text-lg">Schedule a Call</h4>
+                    <p className="text-foreground/60 text-sm mb-5 max-w-[18rem] mx-auto">
+                      Pick a time that works best and we’ll discuss your idea properly.
+                    </p>
+                    <a
+                      href="https://cal.com/nikhil-khullar/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-background transition-all duration-300 hover:scale-[1.02] hover:bg-accent/90"
+                    >
+                      Book a Call
+                    </a>
                   </div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Book a Call</h4>
-                <a
-                  href="https://cal.com/nikhil-khullar/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent hover:text-accent/80 transition-colors text-sm"
-                >
-                  Open Cal.com
-                </a>
               </div>
 
               {/* Location */}

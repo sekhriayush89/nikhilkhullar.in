@@ -1,13 +1,13 @@
 "use client"
 
 import { useInView } from "@/hooks/use-in-view"
-import { Sparkles, Video } from "lucide-react"
+import { Sparkles } from "lucide-react"
 import { useRef } from "react"
 
 export default function AIShowreel() {
   const ref = useRef(null)
   const isInView = useInView(ref)
-  const videoUrl = "https://drive.google.com/file/d/1aCMUGGWv9vI36lTrm8ExtjH_HUBoaIKp/preview"
+  const videoUrl = "https://drive.google.com/uc?export=download&id=1aCMUGGWv9vI36lTrm8ExtjH_HUBoaIKp"
 
   const reels = [
     {
@@ -45,15 +45,6 @@ export default function AIShowreel() {
             </p>
           </div>
 
-          <a
-            href="https://cal.com/nikhil-khullar/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 self-start rounded-full border border-foreground/15 px-5 py-3 text-sm font-semibold text-foreground/80 transition-all duration-300 hover:border-accent hover:text-accent hover:bg-accent/5"
-          >
-            <Video className="w-4 h-4" />
-            Discuss a reel
-          </a>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -63,12 +54,16 @@ export default function AIShowreel() {
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
             <div className="relative min-h-112">
               <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30">
-                <iframe
+                <video
                   src={videoUrl}
                   title="AI Showreel video"
                   className="absolute inset-0 h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls={false}
+                  preload="auto"
                 />
 
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
