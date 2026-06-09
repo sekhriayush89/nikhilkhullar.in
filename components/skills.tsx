@@ -35,6 +35,7 @@ export default function Skills() {
     "Attention to Detail",
     "Visual Creativity",
     "Adaptability",
+    "Ai Artist"
   ]
 
   useEffect(() => {
