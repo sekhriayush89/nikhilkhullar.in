@@ -24,6 +24,7 @@ export default function AIShowreel() {
   }, [isInView])
 
   const [isPlaying, setIsPlaying] = useState(false)
+  const [videoError, setVideoError] = useState<string | null>(null)
 
   const handleVideoEnded = () => {
     if (!videoRef.current) return
@@ -88,8 +89,24 @@ export default function AIShowreel() {
                   controls={false}
                   poster="/placeholder.jpg"
                   onEnded={handleVideoEnded}
+                  onError={(e) => {
+                    console.error('Video error', e)
+                    setVideoError('Failed to load or decode video')
+                  }}
+                  onLoadedMetadata={() => {
+                    if (!videoRef.current) return
+                    if (videoRef.current.videoWidth === 0 || videoRef.current.videoHeight === 0) {
+                      setVideoError('Video metadata indicates zero dimensions (unsupported codec?)')
+                    } else {
+                      setVideoError(null)
+                    }
+                  }}
                 >
                   <source src="/images/chroma-keyed-video-20-281-29.webm" type="video/webm" />
+                  {/* Fallback hint: add an MP4 at the same path if available */}
+                  <source src="/images/chroma-keyed-video-20-281-29.mp4" type="video/mp4" />
+                  <track kind="captions" srcLang="en" />
+                  <p className="text-xs text-foreground/60">Your browser does not support the video element.</p>
                 </video>
 
                 <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent pointer-events-none" />
@@ -111,6 +128,23 @@ export default function AIShowreel() {
                     {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                   </div>
                 </button>
+                {videoError && (
+                  <div className="absolute inset-0 z-30 flex items-center justify-center">
+                    <div className="bg-black/70 text-white p-4 rounded-lg">
+                      <p className="text-sm">Video playback error: {videoError}</p>
+                      <button
+                        className="mt-2 underline text-sm"
+                        onClick={() => {
+                          if (!videoRef.current) return
+                          videoRef.current.controls = true
+                          videoRef.current.load()
+                        }}
+                      >
+                        Enable controls
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
