@@ -12,17 +12,17 @@ export default function AIShowreel() {
     {
       title: "Prompt to Product",
       description: "Fast AI concept frames that turn rough prompts into polished product storyboards and social-ready visuals.",
-      tools: ["Midjourney", "Figma", "Photoshop"],
+      tools: ["Claude", "ChatGpt", "Gemini"],
     },
     {
       title: "Motion Concepts",
       description: "Short cinematic loops and transition studies designed to help brands preview an idea before full production.",
-      tools: ["Runway", "After Effects", "Premiere Pro"],
+      tools: ["Google Flow", "Motion Ai", "Leonardo Ai"],
     },
     {
       title: "Visual Experiments",
       description: "Experimental AI art directions built for mood boards, campaign exploration, and visual identity testing.",
-      tools: ["Sora", "Firefly", "Illustrator"],
+      tools: ["Google Flow", "Uizard Ai", "Uxpilot Ai"],
     },
   ]
 
