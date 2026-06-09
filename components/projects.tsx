@@ -15,7 +15,7 @@ export default function Projects() {
         "End-to-end UI/UX design for a healthcare application including user research, wireframing, interactive prototyping, and responsive interface implementation with clean, accessible design.",
       tech: ["HTML5", "CSS3", "Bootstrap5", "JavaScript"],
       status: "Live",
-      link: "https://nikhilkhullar0-ship-it.github.io/healix/",
+      link: "https://nikhilkhullar0.github.io/healix/",
     },
     {
       title: "Stride Footwear Website",
@@ -23,7 +23,7 @@ export default function Projects() {
         "Responsive footwear website with modern UI, optimized navigation, and mobile-friendly layouts. Engineered responsive interfaces using HTML5, CSS3, and Bootstrap5.",
       tech: ["HTML5", "CSS3", "Bootstrap5", "JavaScript", "Figma"],
       status: "Live",
-      link: "https://nikhilkhullar0-ship-it.github.io/stride/",
+      link: "https://nikhilkhullar0.github.io/stride/",
     },
   ]
 
