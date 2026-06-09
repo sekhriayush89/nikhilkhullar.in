@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { useInView } from '@/hooks/use-in-view'
-import { Linkedin, Github, Mail, Phone, MapPin } from 'lucide-react'
+import { Linkedin, Github, Mail, MapPin, CalendarDays } from 'lucide-react'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -23,7 +23,7 @@ export default function Contact() {
           {/* Header Section */}
           <div className="mb-20">
             <h2 className="text-5xl md:text-7xl font-bold mb-6 text-balance">
-              Let's Work <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">Together</span>
+              Let's Work <span className="bg-linear-to-r from-accent to-primary bg-clip-text text-transparent">Together</span>
             </h2>
             <p className="text-lg md:text-xl text-foreground/70 max-w-2xl leading-relaxed">
               I'm always excited about new opportunities, collaborations, and projects. Whether you have a specific idea or just want to explore possibilities, I'd love to hear from you.
@@ -74,7 +74,7 @@ export default function Contact() {
           {/* Get In Touch Footer Section */}
           <div className="border-t border-border/40 pt-16">
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold mb-4 text-foreground">Get In Touch</h3>
+              <h3 className="text-3xl font-bold mb-4 text-foreground">Book a Call</h3>
               <p className="text-foreground/60 max-w-2xl mx-auto">
                 Have a project in mind or want to discuss collaboration opportunities? I'm just a message away!
               </p>
@@ -94,16 +94,21 @@ export default function Contact() {
                 </a>
               </div>
 
-              {/* Phone */}
+              {/* Book a Call */}
               <div className="p-6 rounded-lg border border-border/40 hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 text-center">
                 <div className="flex justify-center mb-4">
                   <div className="p-3 rounded-lg bg-accent/10">
-                    <Phone size={24} className="text-accent" />
+                    <CalendarDays size={24} className="text-accent" />
                   </div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Phone</h4>
-                <a href="tel:+919015316384" className="text-accent hover:text-accent/80 transition-colors text-sm">
-                  +91 9015316384
+                <h4 className="font-semibold text-foreground mb-2">Book a Call</h4>
+                <a
+                  href="https://cal.com/nikhil-khullar/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent hover:text-accent/80 transition-colors text-sm"
+                >
+                  Open Cal.com
                 </a>
               </div>
 

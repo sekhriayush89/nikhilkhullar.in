@@ -7,7 +7,8 @@ import { useRef } from "react"
 export default function AIShowreel() {
   const ref = useRef(null)
   const isInView = useInView(ref)
-  const videoUrl = "https://www.youtube.com/embed/qql71rLG8NI?rel=0&modestbranding=1"
+  const videoUrl =
+    "https://www.youtube.com/embed/qql71rLG8NI?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=qql71rLG8NI&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
 
   const reels = [
     {
@@ -70,11 +71,6 @@ export default function AIShowreel() {
                 />
 
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
-
-                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
-                  <ExternalLink className="h-3.5 w-3.5" />
-                  YouTube Showreel
-                </div>
               </div>
             </div>
           </div>

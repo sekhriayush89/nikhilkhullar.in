@@ -40,7 +40,7 @@ export default function Hero() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-balance">
             Hi, I'm{" "}
             <span className="relative inline-block whitespace-nowrap">
-              <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent animate-pulse">
+              <span className="bg-linear-to-r from-accent via-primary to-accent bg-clip-text text-transparent animate-pulse">
                 {displayedText}
               </span>
               {displayedText.length < fullText.length && <span className="animate-pulse">|</span>}
@@ -65,35 +65,32 @@ export default function Hero() {
               <div className="absolute inset-0 bg-accent translate-x-full group-hover:translate-x-0 transition-transform duration-300 -z-10" />
               View My Work
             </a>
-            <button
-              onClick={() => {
-                const contactSection = document.getElementById("contact")
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: "smooth" })
-                }
-              }}
+            <a
+              href="https://cal.com/nikhil-khullar/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3.5 rounded-lg border-2 border-accent/40 text-foreground font-semibold hover:border-accent hover:bg-accent/5 transition-all duration-300 cursor-pointer"
             >
-              Get in Touch
-            </button>
+              Book a Call
+            </a>
           </div>
 
           {/* Stats */}
           <div className="flex gap-8 pt-12 border-t border-border/40 flex-wrap">
             <div className="group cursor-pointer">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary group-hover:from-primary group-hover:to-accent transition-all duration-300">
+              <div className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-accent to-primary group-hover:from-primary group-hover:to-accent transition-all duration-300">
                 20+
               </div>
               <p className="text-sm text-foreground/50 mt-1">UI/UX Designs</p>
             </div>
             <div className="group cursor-pointer">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent group-hover:from-accent group-hover:to-primary transition-all duration-300">
+              <div className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-accent group-hover:from-accent group-hover:to-primary transition-all duration-300">
                 3+
               </div>
               <p className="text-sm text-foreground/50 mt-1">Projects Completed</p>
             </div>
             <div className="group cursor-pointer">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary group-hover:from-primary group-hover:to-accent transition-all duration-300">
+              <div className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-accent to-primary group-hover:from-primary group-hover:to-accent transition-all duration-300">
                 20%
               </div>
               <p className="text-sm text-foreground/50 mt-1">User Friction Reduced</p>
@@ -106,12 +103,12 @@ export default function Hero() {
           className={`relative h-96 md:h-full min-h-96 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             }`}
         >
-          <div className="absolute -inset-12 bg-gradient-to-br from-accent/40 via-primary/30 to-transparent rounded-3xl blur-3xl animate-pulse" />
-          <div className="absolute -inset-8 bg-gradient-to-t from-primary/25 via-accent/20 to-transparent rounded-3xl blur-2xl opacity-80" />
-          <div className="absolute -inset-6 bg-gradient-to-r from-accent/20 via-transparent to-primary/20 rounded-3xl blur-xl animate-pulse opacity-60" />
+          <div className="absolute -inset-12 bg-linear-to-br from-accent/40 via-primary/30 to-transparent rounded-3xl blur-3xl animate-pulse" />
+          <div className="absolute -inset-8 bg-linear-to-t from-primary/25 via-accent/20 to-transparent rounded-3xl blur-2xl opacity-80" />
+          <div className="absolute -inset-6 bg-linear-to-r from-accent/20 via-transparent to-primary/20 rounded-3xl blur-xl animate-pulse opacity-60" />
 
-          <div className="relative w-full h-full rounded-3xl border-2 border-accent/40 backdrop-blur-sm overflow-hidden group hover:border-accent/80 transition-all duration-300 shadow-2xl shadow-primary/20 hover:shadow-primary/40 hover:shadow-accent/30">
-            <div className="absolute inset-0 bg-gradient-radial from-primary/40 via-accent/20 to-transparent rounded-3xl z-10 pointer-events-none" />
+          <div className="relative w-full h-full rounded-3xl border-2 border-accent/40 backdrop-blur-sm overflow-hidden group hover:border-accent/80 transition-all duration-300 shadow-2xl shadow-accent/30">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18),transparent_60%)] rounded-3xl z-10 pointer-events-none" />
 
             {/* Animated overlay effects */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none">
