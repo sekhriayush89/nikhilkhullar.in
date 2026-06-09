@@ -47,7 +47,9 @@ export default function AIShowreel() {
           </div>
 
           <a
-            href="#contact"
+            href="https://cal.com/nikhil-khullar/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 self-start rounded-full border border-foreground/15 px-5 py-3 text-sm font-semibold text-foreground/80 transition-all duration-300 hover:border-accent hover:text-accent hover:bg-accent/5"
           >
             <Video className="w-4 h-4" />
