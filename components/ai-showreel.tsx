@@ -7,6 +7,7 @@ import { useRef } from "react"
 export default function AIShowreel() {
   const ref = useRef(null)
   const isInView = useInView(ref)
+  const videoUrl = "https://www.youtube.com/embed/qql71rLG8NI?rel=0&modestbranding=1"
 
   const reels = [
     {
@@ -58,42 +59,22 @@ export default function AIShowreel() {
             className={`lg:col-span-5 relative overflow-hidden rounded-3xl border border-foreground/10 bg-linear-to-br from-accent/15 via-background to-primary/10 p-8 md:p-10 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
-            <div className="relative flex h-full min-h-112 flex-col justify-between">
-              <div className="flex items-center justify-between">
-                <span className="rounded-full border border-foreground/10 bg-background/50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60 backdrop-blur-sm">
-                  Featured Reel
-                </span>
-                <ExternalLink className="h-5 w-5 text-foreground/50" />
-              </div>
+            <div className="relative min-h-112">
+              <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30">
+                <iframe
+                  src={videoUrl}
+                  title="AI Showreel video"
+                  className="absolute inset-0 h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
 
-              <div className="space-y-6">
-                <p className="max-w-sm text-sm leading-relaxed text-foreground/70">
-                  High-energy concept montage for product launches, campaign teasers, and visual direction pitches.
-                </p>
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
 
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {[
-                    ["Style", "Cinematic / Editorial"],
-                    ["Output", "Static + Motion"],
-                    ["Use case", "Social / Brand / Pitch"],
-                    ["Tools", "AI + Design Stack"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="rounded-2xl border border-foreground/10 bg-background/55 p-4 backdrop-blur-sm">
-                      <div className="text-[11px] uppercase tracking-[0.2em] text-foreground/45">{label}</div>
-                      <div className="mt-2 text-sm font-semibold text-foreground">{value}</div>
-                    </div>
-                  ))}
+                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  YouTube Showreel
                 </div>
-              </div>
-
-              <div className="flex items-center justify-between rounded-2xl border border-foreground/10 bg-background/55 px-4 py-3 backdrop-blur-sm">
-                <div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-foreground/45">Availability</div>
-                  <div className="mt-1 text-sm font-semibold text-foreground">Open for collaborations</div>
-                </div>
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 text-accent">
-                  <Sparkles className="h-4 w-4" />
-                </span>
               </div>
             </div>
           </div>
