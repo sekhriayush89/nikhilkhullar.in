@@ -2,7 +2,8 @@
 
 import { useInView } from "@/hooks/use-in-view"
 import { Sparkles } from "lucide-react"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { Play, Pause } from "lucide-react"
 
 export default function AIShowreel() {
   const ref = useRef(null)
@@ -14,6 +15,15 @@ export default function AIShowreel() {
     videoRef.current.muted = true
     videoRef.current.volume = 0
   }, [])
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    if (isInView) {
+      videoRef.current.play().then(() => {}).catch(() => {})
+    }
+  }, [isInView])
+
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const handleVideoEnded = () => {
     if (!videoRef.current) return
@@ -69,7 +79,7 @@ export default function AIShowreel() {
                 <video
                   ref={videoRef}
                   title="AI Showreel video"
-                  className="absolute inset-0 h-full w-full"
+                  className="absolute inset-0 h-full w-full object-cover"
                   autoPlay
                   muted
                   loop
@@ -82,7 +92,25 @@ export default function AIShowreel() {
                   <source src="/images/chroma-keyed-video-20-281-29.webm" type="video/webm" />
                 </video>
 
-                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent pointer-events-none" />
+
+                <button
+                  aria-label={isPlaying ? "Pause video" : "Play video"}
+                  onClick={() => {
+                    if (!videoRef.current) return
+                    if (videoRef.current.paused) {
+                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
+                    } else {
+                      videoRef.current.pause()
+                      setIsPlaying(false)
+                    }
+                  }}
+                  className="absolute inset-0 z-20 flex items-center justify-center bg-transparent"
+                >
+                  <div className="rounded-full bg-black/40 p-3 text-white opacity-90 hover:scale-105 transition-transform">
+                    {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                  </div>
+                </button>
               </div>
             </div>
           </div>
