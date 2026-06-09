@@ -65,9 +65,8 @@ export default function AIShowreel() {
                   preload="auto"
                   controls={false}
                   poster="/placeholder.jpg"
-                  src="/ai.mp4"
-                >
-                </video>
+                  src={process.env.NEXT_PUBLIC_AI_VIDEO_URL || "/ai.mp4"}
+                />
 
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
               </div>
