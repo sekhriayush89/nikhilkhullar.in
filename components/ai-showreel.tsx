@@ -7,7 +7,7 @@ import { useRef } from "react"
 export default function AIShowreel() {
   const ref = useRef(null)
   const isInView = useInView(ref)
-  const videoUrl = "https://drive.google.com/uc?export=download&id=1aCMUGGWv9vI36lTrm8ExtjH_HUBoaIKp"
+  const videoUrl = "https://drive.google.com/file/d/1aCMUGGWv9vI36lTrm8ExtjH_HUBoaIKp/preview?autoplay=1&mute=1&embedded=true"
 
   const reels = [
     {
@@ -54,16 +54,12 @@ export default function AIShowreel() {
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
             <div className="relative min-h-112">
               <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30">
-                <video
+                <iframe
                   src={videoUrl}
                   title="AI Showreel video"
                   className="absolute inset-0 h-full w-full"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls={false}
-                  preload="auto"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
                 />
 
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
