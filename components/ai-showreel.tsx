@@ -1,14 +1,13 @@
 "use client"
 
 import { useInView } from "@/hooks/use-in-view"
-import { ExternalLink, Sparkles, Video } from "lucide-react"
+import { Sparkles, Video } from "lucide-react"
 import { useRef } from "react"
 
 export default function AIShowreel() {
   const ref = useRef(null)
   const isInView = useInView(ref)
-  const videoUrl =
-    "https://www.youtube.com/embed/qql71rLG8NI?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=qql71rLG8NI&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+  const videoUrl = "https://drive.google.com/file/d/1aCMUGGWv9vI36lTrm8ExtjH_HUBoaIKp/preview"
 
   const reels = [
     {
