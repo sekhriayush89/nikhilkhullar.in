@@ -53,7 +53,7 @@ export default function AIShowreel() {
               <span className="bg-linear-to-r from-accent to-primary bg-clip-text text-transparent">AI Experiments</span>
             </h2>
             <p className="text-foreground/60 text-lg max-w-2xl">
-              A curated set of AI-driven visuals, motion ideas, and concept studies built for modern brand storytelling.
+              Book a call to connect with me and explore AI-driven visuals, motion ideas, and concept studies for modern brand storytelling.
             </p>
           </div>
 
@@ -76,6 +76,7 @@ export default function AIShowreel() {
                   playsInline
                   preload="auto"
                   controls={false}
+                  poster="/placeholder.jpg"
                   onEnded={handleVideoEnded}
                 >
                   <source src="/images/chroma-keyed-video-20-281-29.webm" type="video/webm" />
@@ -104,14 +105,27 @@ export default function AIShowreel() {
                 <p className="text-sm text-foreground/70 leading-relaxed">{reel.description}</p>
 
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {reel.tools.map((tool) => (
+                  {reel.title === "Prompt to Product" ? (
+                    <div className="flex flex-col gap-2">
+                      {reel.tools.map((tool) => (
+                        <span
+                          key={tool}
+                          className="inline-flex w-fit rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/60 transition-colors group-hover:border-accent/40 group-hover:text-accent"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    reel.tools.map((tool) => (
                     <span
                       key={tool}
                       className="rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/60 transition-colors group-hover:border-accent/40 group-hover:text-accent"
                     >
                       {tool}
                     </span>
-                  ))}
+                    ))
+                  )}
                 </div>
               </article>
             ))}
