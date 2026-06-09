@@ -25,6 +25,8 @@ export default function AIShowreel() {
 
   const [isPlaying, setIsPlaying] = useState(false)
   const [videoError, setVideoError] = useState<string | null>(null)
+  const sampleMp4 = "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+  const [diag, setDiag] = useState<{canWebm?: string; canMp4?: string; fetchStatus?: string; readyState?: number; width?: number; height?: number; duration?: number} | null>(null)
 
   const handleVideoEnded = () => {
     if (!videoRef.current) return
@@ -90,8 +92,34 @@ export default function AIShowreel() {
                   poster="/placeholder.jpg"
                   onEnded={handleVideoEnded}
                   onError={(e) => {
-                    console.error('Video error', e)
-                    setVideoError('Failed to load or decode video')
+                    console.error("Video error event:", e)
+                    const err = videoRef.current?.error
+                    if (err) {
+                      let msg = ''
+                      switch (err.code) {
+                        case 1:
+                          msg = 'Media aborted (code 1)'
+                          break
+                        case 2:
+                          msg = 'Network error while fetching media (code 2)'
+                          break
+                        case 3:
+                          msg = 'Decoding error or corrupt media (code 3)'
+                          break
+                        case 4:
+                          msg = 'Media source not supported (code 4)'
+                          break
+                        default:
+                          msg = `Unknown media error (code ${err.code})`
+                      }
+                      setVideoError(msg)
+                      // enable native controls so user can see built-in messages
+                      try {
+                        videoRef.current.controls = true
+                      } catch (err) {}
+                    } else {
+                      setVideoError('Failed to load or decode video')
+                    }
                   }}
                   onLoadedMetadata={() => {
                     if (!videoRef.current) return
@@ -128,6 +156,59 @@ export default function AIShowreel() {
                     {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                   </div>
                 </button>
+                <div className="absolute left-4 bottom-4 z-30 flex gap-2">
+                  <button
+                    className="rounded-md bg-black/60 text-white px-3 py-1 text-sm"
+                    onClick={() => {
+                      if (!videoRef.current) return
+                      videoRef.current.controls = true
+                      videoRef.current.load()
+                    }}
+                  >
+                    Enable controls
+                  </button>
+                  <button
+                    className="rounded-md bg-black/60 text-white px-3 py-1 text-sm"
+                    onClick={() => {
+                      if (!videoRef.current) return
+                      // switch to a known-good sample MP4 to verify player
+                      videoRef.current.src = sampleMp4
+                      videoRef.current.load()
+                      videoRef.current.play().catch(() => {})
+                      setVideoError(null)
+                    }}
+                  >
+                    Try sample MP4
+                  </button>
+                  <button
+                    className="rounded-md bg-black/60 text-white px-3 py-1 text-sm"
+                    onClick={async () => {
+                      const canWebm = document.createElement('video').canPlayType('video/webm; codecs="vp8, vorbis"')
+                      const canMp4 = document.createElement('video').canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')
+                      let fetchStatus = ''
+                      try {
+                        const res = await fetch('/images/chroma-keyed-video-20-281-29.webm', { method: 'HEAD' })
+                        fetchStatus = `${res.status} ${res.statusText}; content-type: ${res.headers.get('content-type')}`
+                      } catch (err) {
+                        fetchStatus = `Fetch failed: ${String(err)}`
+                      }
+
+                      const v = videoRef.current
+                      setDiag({
+                        canWebm: canWebm || 'maybe/empty',
+                        canMp4: canMp4 || 'maybe/empty',
+                        fetchStatus,
+                        readyState: v ? v.readyState : -1,
+                        width: v ? v.videoWidth : 0,
+                        height: v ? v.videoHeight : 0,
+                        duration: v ? v.duration : 0,
+                      })
+                      console.log('Video diagnostics', { canWebm, canMp4, fetchStatus, readyState: v?.readyState, width: v?.videoWidth, height: v?.videoHeight, duration: v?.duration })
+                    }}
+                  >
+                    Run diagnostics
+                  </button>
+                </div>
                 {videoError && (
                   <div className="absolute inset-0 z-30 flex items-center justify-center">
                     <div className="bg-black/70 text-white p-4 rounded-lg">
@@ -143,6 +224,16 @@ export default function AIShowreel() {
                         Enable controls
                       </button>
                     </div>
+                  </div>
+                )}
+                {diag && (
+                  <div className="absolute right-4 top-4 z-40 bg-black/70 text-white p-3 rounded-md text-sm">
+                    <div><strong>canPlayType webm:</strong> {diag.canWebm}</div>
+                    <div><strong>canPlayType mp4:</strong> {diag.canMp4}</div>
+                    <div><strong>HEAD fetch:</strong> {diag.fetchStatus}</div>
+                    <div><strong>readyState:</strong> {diag.readyState}</div>
+                    <div><strong>size:</strong> {diag.width}x{diag.height}</div>
+                    <div><strong>duration:</strong> {isFinite(diag.duration) ? Math.round(diag.duration) + 's' : '---'}</div>
                   </div>
                 )}
               </div>
