@@ -55,18 +55,21 @@ export default function AIShowreel() {
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
             <div className="relative min-h-112">
-              <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30">
+              <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30 group">
                 <video
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover transform transition-transform duration-700 will-change-transform md:group-hover:scale-105"
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   controls={false}
                   poster="/placeholder.jpg"
-                  src={process.env.NEXT_PUBLIC_AI_VIDEO_URL || "/ai.mp4"}
-                />
+                >
+                  <source src={process.env.NEXT_PUBLIC_AI_VIDEO_URL || "/ai.mp4"} type="video/mp4" />
+                  {/* fallback source (optional): put a .webm in public/ if available */}
+                  <source src={(process.env.NEXT_PUBLIC_AI_VIDEO_URL || "/ai.mp4").replace(/\.mp4$/, ".webm")} type="video/webm" />
+                </video>
 
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
               </div>
