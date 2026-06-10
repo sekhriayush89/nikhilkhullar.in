@@ -7,6 +7,7 @@ import { useInView } from "@/hooks/use-in-view"
 export default function AIShowreel() {
   const sectionRef = useRef<HTMLElement | null>(null)
   const isInView = useInView(sectionRef)
+  const [open, setOpen] = useState(false)
 
   const reels = [
     {
