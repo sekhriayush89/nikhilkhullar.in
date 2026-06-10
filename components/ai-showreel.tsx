@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import { useRef } from "react"
 import { Sparkles } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
 
@@ -55,13 +55,7 @@ export default function AIShowreel() {
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
             <div className="relative min-h-112">
-              <div
-                role="button"
-                tabIndex={0}
-                onClick={() => setOpen(true)}
-                onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
-                className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30 group cursor-pointer"
-              >
+              <div className="absolute inset-0 overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30 group">
                 <video
                   className="absolute inset-0 h-full w-full object-cover transform transition-transform duration-700 will-change-transform md:group-hover:scale-105"
                   autoPlay
@@ -80,37 +74,6 @@ export default function AIShowreel() {
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
               </div>
             </div>
-
-            {open && (
-              <div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-8"
-                onClick={() => setOpen(false)}
-              >
-                <div
-                  className="relative max-w-full"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    aria-label="Close video"
-                    onClick={() => setOpen(false)}
-                    className="absolute right-2 top-2 z-50 rounded bg-black/50 px-3 py-1 text-white"
-                  >
-                    ✕
-                  </button>
-
-                  <div style={{ width: '100%', maxWidth: 1920 }}>
-                    <video
-                      className="w-full h-auto rounded-xl bg-black"
-                      controls
-                      autoPlay
-                      muted
-                      playsInline
-                      src={process.env.NEXT_PUBLIC_AI_VIDEO_URL || "/ai.mp4"}
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
           <div className="lg:col-span-7 grid gap-6 md:grid-cols-3">
