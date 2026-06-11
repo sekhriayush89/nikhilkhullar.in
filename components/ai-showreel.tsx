@@ -7,6 +7,10 @@ import { useInView } from "@/hooks/use-in-view"
 export default function AIShowreel() {
   const sectionRef = useRef<HTMLElement | null>(null)
   const isInView = useInView(sectionRef)
+  const videoSrc = process.env.NEXT_PUBLIC_AI_VIDEO_URL || '/ai.mp4'
+  const webmSrc = process.env.NEXT_PUBLIC_AI_VIDEO_URL
+    ? process.env.NEXT_PUBLIC_AI_VIDEO_URL.replace(/\.mp4$/, '.webm')
+    : '/images/chroma-keyed-video-20-281-29.webm'
 
   const reels = [
     {
@@ -55,8 +59,8 @@ export default function AIShowreel() {
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
             <div className="w-full flex justify-center">
-              <div className="w-full max-w-[1920px]">
-                <div className="relative aspect-[16/9] overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30 group">
+              <div className="w-full max-w-480">
+                <div className="relative aspect-video overflow-hidden rounded-3xl border border-foreground/10 bg-black shadow-2xl shadow-black/30 group">
                   <video
                     className="absolute inset-0 h-full w-full object-contain bg-black transform transition-transform duration-700 will-change-transform md:group-hover:scale-105"
                     autoPlay
@@ -67,8 +71,8 @@ export default function AIShowreel() {
                     controls={false}
                     poster="/placeholder.jpg"
                   >
-                    <source src={process.env.NEXT_PUBLIC_AI_VIDEO_URL || "/ai.mp4"} type="video/mp4" />
-                    <source src={(process.env.NEXT_PUBLIC_AI_VIDEO_URL || "/ai.mp4").replace(/\.mp4$/, ".webm")} type="video/webm" />
+                    <source src={videoSrc} type="video/mp4" />
+                    <source src={webmSrc} type="video/webm" />
                   </video>
 
                   <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
